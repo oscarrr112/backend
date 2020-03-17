@@ -51,6 +51,8 @@ def register(request):
 @require_http_methods(["GET", "POST"])
 def login(request):
     response = {}
+    print(request.body)
+    print(request.POST)
     try:
         json_result = json.loads(request.POST.get('data'))
         try:
@@ -63,6 +65,7 @@ def login(request):
         except Exception:
             response['code'] = 1
     except Exception as e:
+        response['code'] = 1
         print('error: ', e)
     return JsonResponse(response)
 
