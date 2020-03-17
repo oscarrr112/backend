@@ -18,7 +18,7 @@ def register(request):
     try:
         print('POST: ', request.POST)
         print('FILES: ', request.FILES)
-        json_result = json.loads(request.body)['data']
+        json_result = json.loads(request.body.decode())['data']
         try:
             try:
                 if User.objects.get(phonenum=json_result['PhoneNum']):
