@@ -18,6 +18,8 @@ def register(request):
     try:
         print('POST: ', request.POST)
         print('FILES: ', request.FILES)
+        print('content_type: ', request.content_type)
+        print('read(): ', request.read())
         json_result = json.loads(request.body.decode())['data']
         try:
             try:
