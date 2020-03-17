@@ -16,6 +16,7 @@ URL = 'http://127.0.0.1:8000/media/'
 def register(request):
     response = {}
     try:
+        print(request.body)
         json_result = json.loads(request.body)['data']
         try:
             try:
