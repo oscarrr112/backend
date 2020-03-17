@@ -16,7 +16,7 @@ URL = 'http://127.0.0.1:8000/media/'
 def register(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             try:
                 if User.objects.get(phonenum=json_result['PhoneNum']):
@@ -54,7 +54,7 @@ def login(request):
     print(request.body)
     print(request.POST)
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
@@ -73,7 +73,7 @@ def login(request):
 def findpassword1(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
@@ -91,7 +91,7 @@ def findpassword1(request):
 def findpassword2(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
@@ -143,7 +143,7 @@ def getinfo(request):
 def editinfo(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
@@ -178,7 +178,7 @@ def editinfo(request):
 def addmodel(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
