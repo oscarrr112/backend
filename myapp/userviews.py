@@ -16,8 +16,7 @@ URL = 'http://127.0.0.1:8000/media/'
 def register(request):
     response = {}
     try:
-        print(request.FILES)
-        json_result = json.loads(request.FILES.get('data'))
+        json_result = json.loads(request.body)['data']
         try:
             try:
                 if User.objects.get(phonenum=json_result['PhoneNum']):
