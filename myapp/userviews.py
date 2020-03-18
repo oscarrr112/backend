@@ -145,7 +145,7 @@ def editinfo(request):
     response = {}
     try:
         print(request.body)
-        json_result = json.loads(request.body.decode())['data']
+        json_result = json.loads(request.POST.get('data')).get('data')
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
