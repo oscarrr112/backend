@@ -115,6 +115,9 @@ def getinfo(request):
     response = {}
     try:
         json_result = json.loads(request.GET.get('data'))
+        print(json_result)
+        print(json_result.keys())
+        print(json_result.items())
         try:
             print(json_result['PhoneNum'])
             user = User.objects.get(
