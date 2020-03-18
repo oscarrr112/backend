@@ -85,7 +85,7 @@ def findpassword1(request):
         except Exception:
             response['code'] = 1
     except Exception as e:
-        print('error: ' , e)
+        print('error: ', e)
     return JsonResponse(response)
 
 
@@ -114,12 +114,8 @@ def findpassword2(request):
 def getinfo(request):
     response = {}
     try:
-        json_result = json.loads(request.GET.get('data'))
-        print(json_result)
-        print(json_result.keys())
-        print(json_result.items())
+        json_result = json.loads(request.GET.get('data'))['data']
         try:
-            print(json_result['PhoneNum'])
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
             response['code'] = 0
@@ -140,7 +136,7 @@ def getinfo(request):
         except Exception:
             response['code'] = 1
     except Exception as e:
-        print('error: ' , e)
+        print('error: ', e)
     return JsonResponse(response)
 
 
