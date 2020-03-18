@@ -16,7 +16,7 @@ URL = 'http://127.0.0.1:8000/media/'
 def register(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.POST.get('data')).get('data')
         try:
             try:
                 if User.objects.get(phonenum=json_result['PhoneNum']):
@@ -25,9 +25,6 @@ def register(request):
             except Exception:
                 response['code'] = 0
 
-                print(json_result)
-                print(json_result.keys())
-                print(json_result.items())
                 user = User.objects.create(
                     phonenum=json_result['PhoneNum'],
                     username=json_result['UserName'],
