@@ -18,7 +18,6 @@ def newid():
     return id
 
 
-@require_http_methods(["GET", "POST"])
 def getcloth(request):
     response = {}
     try:
@@ -81,7 +80,7 @@ def newcloth(request):
 def delcloth(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             cloth = Cloth.objects.get(
                 id=json_result['ClothNum'])
