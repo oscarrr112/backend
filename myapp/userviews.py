@@ -144,6 +144,7 @@ def getinfo(request):
 def editinfo(request):
     response = {}
     try:
+        print(request.body)
         json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
