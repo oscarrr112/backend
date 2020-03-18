@@ -1,7 +1,10 @@
 from django.test import TestCase
+from django.core.files import File
+from django.core.files.images import ImageFile
 
 from myapp import models
 
+import time
 import json
 
 
@@ -350,3 +353,38 @@ class GetmodelTest(TestCase):
         response = self.client.get(self.url, data=data).json()
         self.assertEqual(response['code'], 1, '模型获取返回码错误')
 
+
+def newid():
+    id = int(time.time())
+    return id
+
+
+class GetclothTest(TestCase):
+    def setUp(self) -> None:
+        models.User.objects.create(
+            phonenum='17763638641',
+            username='oscar',
+            password='011016',
+            sex='0',
+            requestion='叫啥',
+            answer='彭奥',
+            usermodel='http://1'
+        )
+        with open('media/user/default.jpg', 'rb') as fp:
+            image = ImageFile(file=fp)
+            image.open()
+            models.Cloth.objects.create(
+                id=1, phonenum='17763638641', classifycode='1', clothurl=image
+            )
+
+        self.url = '/wardrobe/getcloth'
+
+    def test_base_getcloth(self):
+        data = {
+            'data': {
+                'PhoneNum': '17763638641',
+                'ClassifyCode': '1'
+            }
+        }
+        response = self.client.get(self.url, data=data).json()
+        print(response)
