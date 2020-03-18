@@ -23,6 +23,7 @@ def getcloth(request):
     try:
         json_result = json.loads(request.GET.get('data'))
         try:
+            print(json_result['PhoneNum'])
             User.objects.get(
                 phonenum=json_result['PhoneNum'])
             try:
