@@ -25,7 +25,7 @@ def register(request):
             except Exception:
                 response['code'] = 0
 
-                print('create user')
+                print(json_result.keys())
                 user = User.objects.create(
                     phonenum=json_result['PhoneNum'],
                     username=json_result['UserName'],
