@@ -16,9 +16,6 @@ URL = 'http://127.0.0.1:8000/media/'
 def register(request):
     response = {}
     try:
-        print(request.POST)
-        print(request.FILES)
-        print(request.FILES.get('Avater'))
         json_result = json.loads(request.POST.get('data'))
         try:
             try:
@@ -28,6 +25,7 @@ def register(request):
             except Exception:
                 response['code'] = 0
 
+                print('create user')
                 user = User.objects.create(
                     phonenum=json_result['PhoneNum'],
                     username=json_result['UserName'],
@@ -35,8 +33,9 @@ def register(request):
                     sex=json_result['Sex'],
                     requestion=json_result['Requestion'],
                     answer=json_result['Answer'],
-                    userpic=request.FILES['Avater'])
+                    userpic=request.FILES.get('Avater'))
 
+            print('create style')
             temp = json_result['Style']
             for index in range(len(temp)):
                 style = Style.objects.create(
