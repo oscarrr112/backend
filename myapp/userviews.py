@@ -74,7 +74,7 @@ def login(request):
 def findpassword1(request):
     response = {}
     try:
-        json_result = json.loads(request.GET.get('data'))
+        json_result = json.loads(request.body.decode())['data']
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
