@@ -17,8 +17,7 @@ def register(request):
     response = {}
     try:
         print(request.POST)
-        print(request.FILES)
-        print(request.body)
+        print(request.FILES.get('Avater'))
         json_result = json.loads(request.POST.get('data'))
         try:
             try:
