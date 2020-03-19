@@ -135,7 +135,8 @@ def getinfo(request):
                 style_response.append(style_search[index]['stylename'])
             json_data['Style'] = style_response
             response['data'] = json_data
-        except Exception:
+        except Exception as e:
+            print(e)
             response['code'] = 1
     except Exception as e:
         print('error: ', e)
