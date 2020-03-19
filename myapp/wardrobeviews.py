@@ -29,7 +29,7 @@ def getcloth(request):
                 clothes = Cloth.objects.filter(
                     phonenum=json_result['PhoneNum'],
                     classifycode=json_result['ClassifyCode']).values('id', 'clothurl')
-                if getlist.count() == 0:
+                if clothes.count() == 0:
                     response['code'] = 2
                 else:
                     response['code'] = 0
