@@ -26,21 +26,19 @@ def getcloth(request):
             User.objects.get(
                 phonenum=json_result['PhoneNum'])
             try:
-                getlist = Cloth.objects.filter(
+                clothes = Cloth.objects.filter(
                     phonenum=json_result['PhoneNum'],
                     classifycode=json_result['ClassifyCode']).values('id', 'clothurl')
                 if getlist.count() == 0:
                     response['code'] = 2
                 else:
                     response['code'] = 0
-                    json_data = {}
-                    cloth = []
-                    for index in range(getlist.count()):
+                    json_data = {'ClothList': list()}
+                    for cloth in clothes:
                         tempjson = {}
-                        tempjson['ClothNum'] = str(getlist[index]['id'])
-                        tempjson['ClothUrl'] = URL + getlist[index]['clothurl'].url()
-                        cloth.append(tempjson)
-                    json_data['ClothList'] = cloth
+                        tempjson['ClothNum'] = str(cloth.id)
+                        tempjson['ClothUrl'] = URL + cloth.clothurl.url()
+                        json_data['ClothList'].append(tempjson)
                     response['data'] = json_data
             except Exception as e:
                 print('code:3 ', e)
