@@ -34,6 +34,7 @@ def getcloth(request):
                 else:
                     response['code'] = 0
                     json_data = {'ClothList': list()}
+                    print(clothes)
                     for cloth in clothes:
                         tempjson = {}
                         tempjson['ClothNum'] = str(cloth.id)
