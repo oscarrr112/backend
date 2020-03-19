@@ -8,7 +8,7 @@ import json
 
 from .models import *
 
-URL = 'http://127.0.0.1:8000/media/'
+URL = 'http://47.101.147.32:8080/media/'
 
 
 # Create your views here.
@@ -121,7 +121,8 @@ def getinfo(request):
             response['code'] = 0
             json_data = {}
             json_data['UserName'] = user.username
-            json_data['Avater'] = URL + str(user.userpic)
+            json_data['Avater'] = URL + user.userpic.url
+            print(json_result['Avater'])
             json_data['Password'] = user.password
             json_data['Sex'] = user.sex
             json_data['Requestion'] = user.requestion
