@@ -116,6 +116,7 @@ def getinfo(request):
     try:
         json_result = json.loads(request.GET.get('data'))['data']
         try:
+            print(json_result)
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
             response['code'] = 0
