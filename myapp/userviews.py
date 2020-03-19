@@ -8,7 +8,7 @@ import json
 
 from .models import *
 
-URL = 'http://47.101.147.32:8080/media/'
+URL = 'http://47.101.147.32:8080'
 
 
 # Create your views here.

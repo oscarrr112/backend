@@ -10,7 +10,7 @@ import time
 
 from .models import *
 
-URL = 'http://127.0.0.1:8000/media/'
+URL = 'http://47.101.147.32:8080'
 
 
 def newid():
@@ -38,7 +38,7 @@ def getcloth(request):
                     for index in range(getlist.count()):
                         tempjson = {}
                         tempjson['ClothNum'] = str(getlist[index]['id'])
-                        tempjson['ClothUrl'] = URL + getlist[index]['clothurl']
+                        tempjson['ClothUrl'] = URL + getlist[index]['clothurl'].url()
                         cloth.append(tempjson)
                     json_data['ClothList'] = cloth
                     response['data'] = json_data
