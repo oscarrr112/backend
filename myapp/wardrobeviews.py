@@ -10,7 +10,7 @@ import time
 
 from .models import *
 
-URL = 'http://47.101.147.32:8080'
+URL = 'http://47.101.147.32:8080/media/'
 
 
 def newid():
@@ -37,8 +37,8 @@ def getcloth(request):
                     print(clothes)
                     for cloth in clothes:
                         tempjson = {}
-                        tempjson['ClothNum'] = str(cloth.id)
-                        tempjson['ClothUrl'] = URL + cloth.clothurl.url()
+                        tempjson['ClothNum'] = str(cloth['id'])
+                        tempjson['ClothUrl'] = URL + cloth['clothurl']
                         json_data['ClothList'].append(tempjson)
                     response['data'] = json_data
             except Exception as e:
