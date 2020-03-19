@@ -123,7 +123,7 @@ def getinfo(request):
             json_data = {}
             json_data['UserName'] = user.username
             json_data['Avater'] = URL + user.userpic.url
-            print(json_result['Avater'])
+            print(json_data['Avater'])
             json_data['Password'] = user.password
             json_data['Sex'] = user.sex
             json_data['Requestion'] = user.requestion
