@@ -56,7 +56,7 @@ def getcloth(request):
 def newcloth(request):
     response = {}
     try:
-        json_result = json.loads(request.POST.get('data'))
+        json_result = json.loads(request.POST.get('data'))['data']
         print(request.FILES['ClothPic'])
         print(json_result)
         try:
