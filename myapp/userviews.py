@@ -182,7 +182,8 @@ def editinfo(request):
 def addmodel(request):
     response = {}
     try:
-        json_result = json.loads(request.body.decode())['data']
+        json_result = json.loads(request.GET.get('data'))['data']
+        print(json_result)
         try:
             user = User.objects.get(
                 phonenum=json_result['PhoneNum'])
@@ -193,12 +194,15 @@ def addmodel(request):
             except Exception as e:
                 print(e)
                 response['code'] = 2
-        except Exception:
+        except Exception as e:
+            print(e)
             response['code'] = 1
     except Exception as e:
         print('error: ', e)
-    return JsonResponse(response)
-
+    response = JsonResponse(response)
+    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Method'] = ['POST', 'GET']
+    return response
 
 def getmodel(request):
     response = {}

@@ -30,7 +30,7 @@ class User(models.Model):
     answer = models.CharField(db_column='Answer', max_length=150)  # Field name made lowercase.
     userpic = models.ImageField(db_column='UserPic', upload_to='user/',
                                 default='user/default.jpg')  # Field name made lowercase.
-    usermodel = models.CharField(db_column='UserModel', max_length=150, null=True,
+    usermodel = models.TextField(db_column='UserModel', null=True,
                                  blank=True)  # Field name made lowercase.
 
     class Meta:
