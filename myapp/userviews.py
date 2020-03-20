@@ -207,7 +207,7 @@ def addmodel(request):
 def getmodel(request):
     response = {}
     try:
-        json_result = json.loads(request.GET.get('data'))
+        json_result = json.loads(request.GET.get('data'))['data']
         try:
             print(json_result['PhoneNum'])
             user = User.objects.get(
