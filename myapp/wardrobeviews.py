@@ -41,6 +41,7 @@ def getcloth(request):
                         tempjson['ClothUrl'] = URL + cloth['clothurl']
                         json_data['ClothList'].append(tempjson)
                     response['data'] = json_data
+                    print(response['data'])
             except Exception as e:
                 print('code:3 ', e)
                 response['code'] = 3
